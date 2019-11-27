@@ -23,7 +23,7 @@ int main()
 }
 char chouse_gui()
 {
-    system("clear");
+    system("clear"); //system("cls"); in windows
     char input;
     printf("==============================================================================================\n");
     printf("==                                                                                          ==\n");
@@ -39,6 +39,6 @@ char chouse_gui()
     printf("==============================================================================================\n");
     printf("==      Введите число: ");scanf("%c",&input);printf("                                                                    ==\n");
     printf("==============================================================================================\n");
-    system("clear");
+    system("clear"); //system("cls"); in windows
     return input;
 }
