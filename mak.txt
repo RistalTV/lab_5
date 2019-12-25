@@ -1,0 +1,80 @@
+1|Mcfresh|149|0|
+1|Texas burger|179|0|
+1|Western Gourmet|209|0|
+1|Double Royal|235|0|
+1|Chicken Prime|139|0|
+1|Texas Chicken|179|0|
+1|Double filet-O-fish|169|0|
+1|Royal|139|0|
+1|Makchiken|100|0|
+1|Big Mac|135|0|
+2|Sharp Chicken McNuggets|69|99|
+2|Chicken McNuggets|69|210|
+2|Large shrimp|229|689|
+2|french fries|139|0|
+2|French Fries|48|77|
+2|Chicken Wings|182|550|
+2|McFlavor rustic freeze|149|0|
+2|Country style potatoes|77|0|
+3|Fish Roll|169|0|
+3|Caesar Roll|163|0|
+3|Shrimp Roll|209|0|
+3|Carrot sticks|48|0|
+3|Apple slices|48|0|
+3|Caesar Salad|269|0|
+3|Vegetable salad|205|0|
+4|McFlurry De Luxe Pistachio|105|0|
+4|Christmas cake|99|0|
+4|Pie with Karelian blueberries|55|0|
+4|Caramel ice cream|70|0|
+4|American Cheesecake|129|0|
+4|Chocolate Mousse|145|0|
+4|Cherry Pie|129|0|
+4|Chocolate Ice Cream|70|0|
+5|Waffle cone|99|0|
+5|Donat|75|0|
+5|Coca-Cola|65|75|
+5|Lipton Ice Tea - Green Tea|65|75|
+5|Strawberry Milkshake|99|109|
+5|Milk|55|0|
+5|Ice Coffee|109|0|
+5|Chocolate Milkshake|99|109|
+5|Fanta|65|75|
+5|Lipton Ice Tea - Lemon|65|75|
+5|Orange juice|80|0|
+5|Coca-Cola Zero|65|75|
+6|Berry Punch|99|0|
+6|Sea buckthorn punch|99|0|
+6|Cappuccino Hazelnut|124|0|
+6|Black tea|70|0|
+6|Cappuccino|99|109|
+6|Coffee|80|95|
+6|Earl Gray Black Tea|70|0|
+6|Latte|99|95|
+6|Green tea|70|0|
+6|Double Espresso|65|0|
+7|Barbecue Sauce|25|0|
+7|Mustard Sauce|25|0|
+7|Sweet Chili Sauce|25|0|
+7|Cheese Sauce|25|0|
+7|Ketchup|25|0|
+7|Salsa Sauce|25|0|
+7|Sweet and Sour Sauce|25|0|
+7|Curry Sauce|25|0|
+7|1000 Islands Sauce|25|0|
+8|Fried eggs|99|0|
+8|Great Breakfast|155|0|
+8|Oatmeal|75|0|
+8|Fresh Roll|139|0|
+8|MakTost with cheese|45|0|
+8|Omelet|99|0|
+8|Chicken Fresh McMuffin|115|0|
+8|Fresh McMuffin|119|0|
+8|Potato pancakes|48|0|
+8|Pancakes|99|0|
+9|Royal Set|579|0|
+9|Nuggets Boxing|85|0|
+9|Hit Set |629|0|
+9|Mix Boxing XL|200|0|
+9|Mix Boxing Grand|300|0|
+9|Mix Boxing|100|0|

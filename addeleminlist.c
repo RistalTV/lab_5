@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <conio.h>
 #include "output.h"
-
+#define MAX_ELLEMENT 200
 
 
 int cE(void);
@@ -75,7 +77,7 @@ int addeleminlist(void){
             printf("                 Нажмите клавишу для продолжения: ");scanf ("%1s",&kat1);
             printf("================================================================================\n");
             if (( kat1 != '0' )||( kat1 != 'n' )||( kat1 != 'N')){ i  =  1; }
-            if (( kat1 == '0' )||( kat1 == 'n' )||( kat1 == 'N')){ i  =  0; }
+            if (( kat1 == '0' )||( kat1 == 'n' )||( kat1 == 'N')){ i  =  0;return 1; }
          }
         if ((kat!='0')&&(kat!='n')&&(kat!='N'))
          {
@@ -87,7 +89,7 @@ int addeleminlist(void){
             printf("                 Нажмите клавишу для продолжения: ");scanf ("%1s",&kat1);
             printf("================================================================================\n");
             if (( kat1 != '0' )||( kat1 != 'n' )||( kat1 != 'N')){ i  =  1; }
-            if (( kat1 == '0' )||( kat1 == 'n' )||( kat1 == 'N')){ i  =  0; }
+            if (( kat1 == '0' )||( kat1 == 'n' )||( kat1 == 'N')){ i  =  0;return 1; }
          }
         elemCount=cE ();
       }while (i!=0);
@@ -96,7 +98,7 @@ int addeleminlist(void){
 
 int cE(void){
     char * filename = "C:/projects/lab_5/mak.txt";
-    char k='0';
+    char k='"';
     int  elemCount=0;
     FILE* f = fopen(filename, "r+");
     while(k != EOF)                                 //Считываем количество строк
@@ -105,31 +107,48 @@ int cE(void){
         if (k == '\n'){elemCount++;}                //Ищем '|' и прибавляем к переменной 1
     }
    fclose(f);
-   if(elemCount>0){elemCount--;}
     return elemCount;
 }
 
 void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char cost_loW[4])
 {
-    countStr++;
-    int end;
+    int end=0;
     char * filename = "C:/projects/lab_5/mak.txt";
-    struct mak names[200];
+    struct mak names[MAX_ELLEMENT];
     int i=0,i1=0,i2=0;
     char k='0';
     int elemCountStr=0,countElem=0;
-                            names[countStr].cat[0]       = cat[0];
-    for(i = 0; i < 30; i++){names[countStr].name[i]      = name[i];      }
-    for(i = 0; i <  4; i++){names[countStr].cost_loW[i]  = cost_loW[i];  }
-    for(i = 0; i <  4; i++){names[countStr].cost_higt[i] = cost_higt[i]; }
+    char cat1[1],name1[30],cost_higt1[4],cost_loW1[4];
+//===================================================================
+//===       Затрание мусора находившегося в памяти                ===
+//===================================================================
+    for(i=0;i!=MAX_ELLEMENT;i++){                                    //==
+        for(i2 = 0; i2 <  1; i2++){names[i].cat[i2]       = '\0';}//==
+        for(i2 = 0; i2 < 30; i2++){names[i].name[i2]      = '\0';}//==
+        for(i2 = 0; i2 <  4; i2++){names[i].cost_loW[i2]  = '\0';}//==
+        for(i2 = 0; i2 <  4; i2++){names[i].cost_higt[i2] = '\0';}//==
+    }                                                            //==
+//===================================================================
+    i=0;i2=0;
+//=============================================================================
+//===     Занесение вводимых значений в последний экземпляр структуры       ===
+//=============================================================================
+                            names[countStr].cat[0]       = cat[0];         //==
+    for(i = 0; i < 30; i++){names[countStr].name[i]      = name[i];      } //==
+    for(i = 0; i <  4; i++){names[countStr].cost_loW[i]  = cost_loW[i];  } //==
+    for(i = 0; i <  4; i++){names[countStr].cost_higt[i] = cost_higt[i]; } //==
+//=============================================================================
+
+//=============================================================================
+//===     Считывание из файла значений в экземпляры структуры               ===
+//=============================================================================
     FILE* fil = fopen(filename, "a+");
     i=0;
-    while (k != '/')
+    while (k != EOF)
      {
       fscanf(fil,"%c",&k);
-      if(countElem != --countStr)
-       {
-        if (k != '|')
+        if(k=='"'){break;}
+                if (k != '|')
          {
             if (k != '\n')
              {
@@ -140,7 +159,7 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
                 case (2) : names[countElem].cost_loW[i]  =  k;i++;if(i>=4) {i=0;} break;
                 case (3) : names[countElem].cost_higt[i] =  k;i++;if(i>=4) {i=0;} break;
                }
-             }
+             }else{end++;}
          }
         if(k=='|')
            {
@@ -152,9 +171,11 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
               countElem++;
              }
            }
-       }
+        if (end>countElem){break;}
      }
-   fclose(fil);/*
+   fclose(fil);                                                            //==
+//=============================================================================
+   /*
    FILE* f = fopen(filename, "w");
    for(i1=0;i1<countStr;i1++)
     {
@@ -176,64 +197,28 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
        fprintf (f,"/");
     }
    fclose(f);*/
-    FILE* file = fopen (filename,"w");
-    i=0;end=0;
-        for(i=0;((i!=countStr)||(names[i].cat[0]!='\0'));i++){
-            switch (elemCountStr) {
-              case (0) :
-                k = names[i].cat[i1]      ;
-                i1++;
-                if((i1>=1)||(names[i].cat[i1]=='\0'))
-                  {
-                    fprintf (file,"|");
-                    k='|';
-                    i1=0;
-                  }
-                fprintf (file,"%c",k);break;
-              case (1) :
-                k = names[i].name[i1]     ;
-                i1++;
-                if((i1>=30||(names[i].name[i1]=='\0')))
-                  {
-                    fprintf (file,"|");
-                    k='|';
-                    i1=0;
-                  }
-                fprintf (file,"%c",k);
-                break;
-              case (2) :
-                k = names[i].cost_loW[i1] ;
-                i1++;
-                if((i1>=4||(names[i].cost_loW[i1]=='\0')))
-                  {
-                    fprintf (file,"|");
-                    k='|';
-                    i1=0;
-                  }
-                fprintf (file,"%c",k);
-                break;
-              case (3) :
-                k = names[i].cost_higt[i1];
-                i1++;
-                if((i1>=4)||(names[i].cost_higt[i1]=='\0'))
-                  {
-                    fprintf (file,"\n");
-                    k='|';
-                    i1=0;
-                  }
-                fprintf (file,"%c",k);
-                break;
-            }
-            if(k=='|')
-               {
-                i1=0;
-                elemCountStr++;
-                if (elemCountStr>3)
-                 {
-                  elemCountStr=0;
-                  i++;
-                 }
-               }
+
+//=============================================================================
+//===     Занесение экземпляров структуры в файл                            ===
+//=============================================================================
+   countStr++;
+   FILE* file = fopen (filename,"wb");
+   i=0;end=0;i1=0;i2=0;
+    while(i!=countStr){
+        fprintf (file,"|");
+        cat1[0]=names[i].cat[0];
+        fprintf (file,"%-1s",cat1);
+        fprintf (file,"|");
+        for (i1=0;i1<30;i1++){name1[i1]          = names[i].name[i1];}
+        fprintf (file,"%-30s",name1);
+        fprintf (file,"|");
+        for (i1=0;i1<30;i1++){cost_loW1[i1]      = names[i].cost_loW[i1];}
+        fprintf (file,"%-4s",cost_loW1);
+        fprintf (file,"|");
+        for (i1=0;i1<30;i1++){cost_higt1[i1]     = names[i].cost_higt[i1];}
+        fprintf (file,"%-4s",cost_higt1);
+        fprintf (file,"|\n");
+             i++;
         }
     fclose (file);
 }
