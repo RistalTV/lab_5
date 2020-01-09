@@ -1,13 +1,16 @@
+//=====================================================================
+//==     Этот файл отвечает за то, чтобы смотреть элементы файла     ==
+//==        и функции проверки вводимых данных пользоватером         ==
+//=====================================================================
 #include <stdio.h>
 #include <stdlib.h>
-#include <output.h>
+#include "output.h"
 #include <windows.h>
 #include "addeleminlist.h"
 #define MAX_ELLEMENT 200
 
 
 struct mak{
-        int id;
         char cat[1];
         char name[30];
         char cost_higt[4];
@@ -54,7 +57,7 @@ void printstruts(int kat){
                 case (0) : name[countElem].cat[i]       =  k;i++;if(i>=1) {i=0;} break;
                 case (1) : name[countElem].name[i]      =  k;i++;if(i>=30){i=0;} break;
                 case (2) : name[countElem].cost_loW[i]  =  k;i++;if(i>=4) {i=0;} break;
-                case (3) : name[countElem].cost_higt[i] =  k;i++;if(i>=4) {i=0;} name[countElem].id=countElem;break;
+                case (3) : name[countElem].cost_higt[i] =  k;i++;if(i>=4) {i=0;} break;
                }
              }else{end++;}
          }
@@ -95,5 +98,29 @@ char kate(int kat){
         case 8: return '8';
         case 9: return '9';
     }
+    return 0;
+}
+int checkNoNum(void){
+    char input;
+    int i=1,i1=0;
+    do{
+        printf("        Введите число: ");
+        scanf("%c",&input);
+        if(input == '\n'){scanf("%c",&input);}
+        switch (input){
+            case '0': i=0;return 0;
+            case '1': i=0;return 1;
+            case '2': i=0;return 2;
+            case '3': i=0;return 3;
+            case '4': i=0;return 4;
+            case '5': i=0;return 5;
+            case '6': i=0;return 6;
+            case '7': i=0;return 7;
+            case '8': i=0;return 8;
+            case '9': i=0;return 9;
+          default: i1=1;if((i==1)&&(i1!=0)){warningNoNom();} break;
+         }
+       }
+    while(i!=0);
     return 0;
 }

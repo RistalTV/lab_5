@@ -1,21 +1,20 @@
+//=====================================================================
+//==              Этот файл отвечает за логику псевдо GUI            ==
+//=====================================================================
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <windows.h>
 #include "output.h"
+#include "check.h"
+#include "deleleminlist.h"
+#include "addeleminlist.h"
+#include "search.h"
+#include "func.h"
 
-int gui(void);
-int client(void);
-int seller(void);
-void gui_chouse_cat(void);
-void logo(void);
-int input_str_2(void);
-void printstruts(int);
-void gui_chouse_cat(void);
-int client_1(int categ);
-void endlist(void);
-void outputlists(void);
-int addeleminlist(void);
+    int client(void);
+    int seller(void);
+    int client_1(int categ);
 
 void select_in(void){
     int i=1;
@@ -61,16 +60,17 @@ int client_1(int categ){
 int seller(void)
 {
     int i=1,gl=0;
-  system("cls"); //system("cls"); in windows
   do{
-     output_str_1(2,1);
+      system("cls"); //system("cls"); in windows
+      output_str_1(2,1);
      i=input_str_2 ();
      switch (i) {
         case 0 : return 1;
-        case 1 : gl=addeleminlist();if(gl==1){i=1;}break;
-        case 2 : i=1;break;
+        case 1 : do{gl=addeleminlist();if(gl==1){i=1;break;}}while(gl!=0);break;
+        case 2 : do{gl=deleleminlist();if(gl==1){i=1;break;}}while(gl!=0);break;
         case 3 : outputlists(); gl=input_str_2 ();if ((gl!=1)&&(gl!=0)){i=1;}if ((gl!=1)&&(gl==0)){return 1;}if ((gl==1)&&(gl!=0)){i=0;}break;
+        case 4 : do{gl=serarcheleminlist();if(gl==1){i=1;break;}}while(gl!=0);break;
      }
     }while(i!=0);
-  return 0;
+  return i;
 }

@@ -78,4 +78,4 @@
 9|Mix Boxing XL|200|0|
 9|Mix Boxing Grand|300|0|
 9|Mix Boxing|100|0|
-"
+

@@ -73,8 +73,3 @@
 8|Potato pancakes|48|0|
 8|Pancakes|99|0|
 9|Royal Set|579|0|
-9|Nuggets Boxing|85|0|
-9|Hit Set |629|0|
-9|Mix Boxing XL|200|0|
-9|Mix Boxing Grand|300|0|
-9|Mix Boxing|100|0|

@@ -1,3 +1,6 @@
+//=====================================================================
+//==    Этот файл отвечает за то, чтобы добовлять элементы в файл    ==
+//=====================================================================
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,8 +10,6 @@
 
 
 int cE(void);
-void topaddlist(void);
-void printCat(void);
 void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char cost_loW[4]);
 
 struct mak{
@@ -19,6 +20,7 @@ struct mak{
 };
 
 int addeleminlist(void){
+    system("cls"); //system("cls"); in windows
     int elemCount=cE (),i=1;
     char kat,kat1;
     char cat[1];
@@ -122,12 +124,13 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
 //===================================================================
 //===       Затрание мусора находившегося в памяти                ===
 //===================================================================
-    for(i=0;i!=MAX_ELLEMENT;i++){                                    //==
-        for(i2 = 0; i2 <  1; i2++){names[i].cat[i2]       = '\0';}//==
-        for(i2 = 0; i2 < 30; i2++){names[i].name[i2]      = '\0';}//==
-        for(i2 = 0; i2 <  4; i2++){names[i].cost_loW[i2]  = '\0';}//==
-        for(i2 = 0; i2 <  4; i2++){names[i].cost_higt[i2] = '\0';}//==
-    }                                                            //==
+   for(i=0;i!=MAX_ELLEMENT;i++){                                 //==
+       for(i2 = 0; i2 <  1; i2++){names[i].cat[i2]       = '\0';}//==
+       for(i2 = 0; i2 < 30; i2++){names[i].name[i2]      = '\0';}//==
+       for(i2 = 0; i2 <  4; i2++){names[i].cost_loW[i2]  = '\0';}//==
+       for(i2 = 0; i2 <  4; i2++){names[i].cost_higt[i2] = '\0';}//==
+   }                                                             //==
+   for(i2 = 0; i2 <  30; i2++){name1[i2] = '\0';}      //==
 //===================================================================
     i=0;i2=0;
 //=============================================================================
@@ -175,29 +178,6 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
      }
    fclose(fil);                                                            //==
 //=============================================================================
-   /*
-   FILE* f = fopen(filename, "w");
-   for(i1=0;i1<countStr;i1++)
-    {
-       cat[0]=names[i1].cat[0];                                         //Загружаем
-       for(i = 0; i < 30; i++){name[i]      = names[i1].name[i];}       //из экземпляров структур
-       for(i = 0; i <  4; i++){cost_loW[i]  = names[i1].cost_loW[i];}   //в массивы
-       for(i = 0; i <  4; i++){cost_higt[i] = names[i1].cost_higt[i];}  //
-       for(i2=0;i2<countStr;i2++)
-         {
-           fprintf (f,"%-1s",cat);
-           fprintf (f,"|");
-           fprintf (f,"%-30s",name);
-           fprintf (f,"|");
-           fprintf (f,"%-4s",cost_loW);
-           fprintf (f,"|");
-           fprintf (f,"%-4s",cost_higt);
-           fprintf (f,"\n");
-         }
-       fprintf (f,"/");
-    }
-   fclose(f);*/
-
 //=============================================================================
 //===     Занесение экземпляров структуры в файл                            ===
 //=============================================================================
@@ -205,20 +185,16 @@ void loadinfile(int countStr,char cat[1],char name[30],char cost_higt[4],char co
    FILE* file = fopen (filename,"wb");
    i=0;end=0;i1=0;i2=0;
     while(i!=countStr){
-        fprintf (file,"|");
-        cat1[0]=names[i].cat[0];
-        fprintf (file,"%-1s",cat1);
-        fprintf (file,"|");
-        for (i1=0;i1<30;i1++){name1[i1]          = names[i].name[i1];}
-        fprintf (file,"%-30s",name1);
-        fprintf (file,"|");
-        for (i1=0;i1<30;i1++){cost_loW1[i1]      = names[i].cost_loW[i1];}
-        fprintf (file,"%-4s",cost_loW1);
-        fprintf (file,"|");
-        for (i1=0;i1<30;i1++){cost_higt1[i1]     = names[i].cost_higt[i1];}
-        fprintf (file,"%-4s",cost_higt1);
-        fprintf (file,"|\n");
-             i++;
+       cat1[0]=names[i].cat[0];
+       for (i1=0;i1<30;i1++){name1[i1]          = names[i].name[i1];}
+       for (i1=0;i1<4;i1++){cost_loW1[i1]      = names[i].cost_loW[i1];}
+       for (i1=0;i1<4;i1++){cost_higt1[i1]     = names[i].cost_higt[i1];}
+       fprintf (file,"%c|%-s|%-s|%-s|\n",cat1[0],name1,cost_loW1,cost_higt1);
+       printf ("%c|%-s|%-4s|%-4s|\n",cat1[0],name1,cost_loW1,cost_higt1);
+       for (i1=0;i1<30;i1++){name1[i1]          = '\0';}
+       for (i1=0;i1<30;i1++){cost_loW1[i1]      = '\0';}
+       for (i1=0;i1<30;i1++){cost_higt1[i1]     = '\0';}
+        i++;
         }
     fclose (file);
 }
